@@ -15,15 +15,7 @@ const Banner = () => {
                             <Typography variant="subtitle1" color="text.secondary" component="p" sx={{marginBottom: '1rem'}}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             </Typography>
-                            <Button 
-                            sx={{
-                                background:
-                                  'linear-gradient(to bottom, #04C8A4 , ' +
-                                  '#00A187, #05806D 100%)',
-                                  color:'white',
-                              }}
-                              
-                            variant='content'>GET STARTED</Button>
+                            <Button variant='content'>GET STARTED</Button>
                         </CardContent>
 
                     </Box>

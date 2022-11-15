@@ -18,7 +18,7 @@ const Banner = () => {
                             <Button 
                             sx={{
                                 background:
-                                  'linear-gradient(to bottom, #04C8A4 , ' +
+                                  'linear-gradient(to bottom, #b7ebde , ' +
                                   '#00A187, #05806D 100%)',
                                   color:'white',
                               }}

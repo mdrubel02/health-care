@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Box, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import chair from '../../../assets/images/chair.png'
 
 const Banner = () => {
@@ -15,15 +15,6 @@ const Banner = () => {
                             <Typography variant="subtitle1" color="text.secondary" component="p" sx={{marginBottom: '1rem'}}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             </Typography>
-                            <Button 
-                            sx={{
-                                background:
-                                  'linear-gradient(to bottom, #04C8A4 , ' +
-                                  '#00A187, #05806D 100%)',
-                                  color:'white',
-                              }}
-                              
-                            variant='content'>GET STARTED</Button>
                         </CardContent>
 
                     </Box>

@@ -19,7 +19,7 @@ const Banner = () => {
                             sx={{
                                 background:
                                   'linear-gradient(to bottom, #04C8A4 , ' +
-                                  '#00A187, #05806D 100%)',
+                                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                                   color:'white',
                               }}
                               

@@ -18,9 +18,9 @@ const Banner = () => {
                             <Button 
                             sx={{
                                 background:
-                                  'linear-gradient(to bottom, #04C8A4 , ' +
-                                  '#00A187, #05806D 100%)',
-                                  color:'white',
+                                  'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                                  color:'red',
                               }}
                               
                             variant='content'>GET STARTED</Button>
