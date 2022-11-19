@@ -8,8 +8,8 @@ import phone from '../../../assets/icons/phone.svg';
 const Information = () => {
     const menus = [
         { id: '01', img: clock, title: 'Opening Hours', description: 'Lorem Ipsum is simply ' },
-        { id: '02', img: marker, title: 'Visit our location', description: 'Brooklyn, NY 10036, United States' },
-        { id: '03', img: phone, title: 'Contact us now', description: '+000 123 456789' },
+        { id: '01', img: marker, title: 'Visit our location', description: 'Brooklyn, NY 10036, United States' },
+        { id: '01', img: phone, title: 'Contact us now', description: '+000 123 456789' },
     ]
     const Item = styled(Paper)(({ theme }) => ({
 
@@ -18,9 +18,7 @@ const Information = () => {
         padding: theme.spacing(0),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-       
     }));
-   
     return (
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{lg:3, xs: 2, md: 3 }} >
@@ -29,7 +27,7 @@ const Information = () => {
                            <Item> <Card sx={{ display: 'flex',justifyContent: 'center',alignItems: 'center',backgroundColor: '#19D3AE' ,padding: '10px'}}>
                                 <CardMedia
                                     component="img"
-                                    sx={{ width: 50, height: 50, }}
+                                    sx={{ width: 50, height: 50,}}
                                     image={menu.img}
                                     alt="Live from space album cover"
                                 />

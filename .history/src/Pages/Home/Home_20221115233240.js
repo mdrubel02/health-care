@@ -11,7 +11,7 @@ const Home = () => {
         <Container>
             <Banner />
             <Information />
-            <Services />
+            <Services/>
         </Container>
     );
 };
