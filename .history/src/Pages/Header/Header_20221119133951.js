@@ -5,7 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import React, { useState } from 'react';
 import { tokens } from '../../Theme/Theme';
 // import { Link } from 'react-router-dom';
-import LoginIcon from '@mui/icons-material/Login';
 import './Header.css'
 
 
@@ -60,7 +59,7 @@ const Header = () => {
                         Doctors portal
                     </Typography>
 
-                    <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
+                    <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex' ,  md: 'none' },justifyContent: 'center' }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -127,17 +126,8 @@ const Header = () => {
 
                     </Box>
 
-
-
-
-
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button
-                            color='secondary'
-                            variant="outlined" component={RouterLink} to='/login' startIcon={<LoginIcon />}>
-                            Login
-                        </Button>
-                        {/* <Tooltip title="Open settings">
+                        <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
@@ -163,7 +153,7 @@ const Header = () => {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
-                        </Menu> */}
+                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>

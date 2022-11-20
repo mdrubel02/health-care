@@ -50,7 +50,7 @@ const Banner = () => {
                                         '#00A187, #05806D 100%)',
                                     color: 'white',
                                 }}
-                                variant='outlined'>GET STARTED</Button>
+                                variant='outline'>GET STARTED</Button>
                         </Typography>
                     </Box>
                 </Box>

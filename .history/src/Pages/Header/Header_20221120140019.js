@@ -132,9 +132,9 @@ const Header = () => {
 
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button
-                            color='secondary'
-                            variant="outlined" component={RouterLink} to='/login' startIcon={<LoginIcon />}>
+                        <Button 
+                        color='white'
+                        variant="outlined"  component={RouterLink} to='/login' startIcon={<LoginIcon />}>
                             Login
                         </Button>
                         {/* <Tooltip title="Open settings">

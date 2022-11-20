@@ -18,7 +18,7 @@ const Shop = () => {
     }, [])
 console.log(products);
     const renderProducts = products.map((product) => (
-        <Grid item key={product.id} xs={12} sm={4} md={4} display="flex" flexDirection={'column'} alignItems="center">
+        <Grid item key={product.id} xs={2} sm={4} md={4} display="flex" flexDirection={'column'} alignItems="center">
             {matches ? (
                 <SingleProduct product={product} matches={matches} />
             ) : (

@@ -1,0 +1,76 @@
+[
+    {
+        "_id": "1",
+        "price": "449",
+        "picture": "https://i.ibb.co/yV99SKs/series-7-01-500x500-removebg-preview.png",
+        "name": "Starlight Aluminum Case with Braided Solo Loop"
+      },
+    {
+        "_id": "2",
+        "price": "399",
+        "picture": "https://i.ibb.co/7nNPGz9/series-6-01-500x500-removebg-preview.png",
+        "name": "Starlight Aluminum Case with Sport Loop"
+      },
+    {
+        "_id": "3",
+        "price": "429",
+        "picture": "https://i.ibb.co/YNPMBjK/mu6d2ll-a-1-500x500-removebg-preview.png",
+        "name": "Midnight Aluminum Case with Solo Loop"
+      },
+      {
+        "_id": "4",
+        "price": "489",
+        "picture": "https://i.ibb.co/2PfwwGg/apple-watch-se-abyss-blue-500x500-removebg-preview.png",
+        "name": "Starlight Aluminum Case with Nike Sport Loop"
+      },
+
+    {
+        "_id": "5",
+        "price": "449",
+        "picture": "https://i.ibb.co/WVvyRDV/apple-watch-se-110-500x500-removebg-preview.png",
+        "name": "Green Aluminum Case with Solo Loop"
+      },
+    {
+        "_id": "6",
+        "price": "549",
+        "picture": "https://i.ibb.co/RB8xmKW/apple-watch-se-01-500x500-removebg-preview.png",
+        "name": "Silver Stainless Steel Case with Braided Solo Loop"
+      },
+      {
+        "_id": "7",
+        "price": "399",
+        "picture": "https://i.ibb.co/wWrrws0/apple-watch-nike-starlight-01-500x500-removebg-preview.png",
+        "name": "Midnight Aluminum Case with Sport Band"
+      },
+    {
+        "_id": "8",
+        "price": "849",
+        "picture": "https://i.ibb.co/1KHSPMz/apple-watch-nike-black-01-500x500-removebg-preview.png",
+        "name": "Space Black Titanium Case with Braided Solo Loop"
+      },
+    {
+        "_id": "9",
+        "price": "749",
+        "picture": "https://i.ibb.co/HX9y2T4/series-6-red-500x500-removebg-preview.png",
+        "name": "Titanium Case with Sport Band"
+      },
+    {
+        "_id": "10",
+        "price": "549",
+        "picture": "https://i.ibb.co/gvfgS1C/series-6-milanese-loop-500x500-removebg-preview.png",
+        "name": "Space Black Titanium Case with Sport Loop"
+      },
+    {
+        "_id": "11",
+        "price": "1249",
+        "picture": "https://i.ibb.co/QNQCYzP/apple-watch-series-7-45mm-blue-01-500x500-removebg-preview.png",
+        "name": "Silver Stainless Steel Case with Single Tour"
+      },
+    {
+        "_id": "12",
+        "price": "1249",
+        "picture": "https://i.ibb.co/tcTFqrx/starlight-01-500x500-removebg-preview.png",
+        "name": "Silver Stainless Steel Case with Single Tour"
+      }
+   
+]
