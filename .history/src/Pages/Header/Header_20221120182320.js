@@ -135,7 +135,7 @@ const Header = () => {
                         <Button
                             color='secondary'
                             variant="outlined" component={RouterLink} to='/signUp' startIcon={<LoginIcon />}>
-                            SignUp
+                            Login
                         </Button>
                         {/* <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

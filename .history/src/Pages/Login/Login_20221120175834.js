@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
 import { Avatar, Button, Checkbox, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Paper, styled, TextField, Typography } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
 
 
 
@@ -59,7 +58,7 @@ const Login = () => {
                         defaultValue="Default Value"
                         sx={{ paddingBottom: '1rem' }}
                         placeholder='Enter username' fullWidth required />
-                    <FormControl variant="outlined" fullWidth color='secondary'>
+                    <FormControl variant="outlined" fullWidth>
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-password"
@@ -98,7 +97,7 @@ const Login = () => {
                     </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                    <Link component={RouterLink} to='/signUp' color={'secondary'}>
+                    <Link href="#" color={'secondary'}>
                         Sign Up
                     </Link>
                 </Typography>

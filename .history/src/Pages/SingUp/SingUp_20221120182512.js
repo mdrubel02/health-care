@@ -6,7 +6,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link as RouterLink } from 'react-router-dom';
 
 
-
 const LoginPaper = styled(Paper)(({ theme }) => ({
     padding: '20px',
     height: '70vh',
@@ -17,7 +16,7 @@ const LoginPaper = styled(Paper)(({ theme }) => ({
         marginTop: '0.5rem'
     },
 }));
-const Login = () => {
+const SingUp = () => {
     const [values, setValues] = useState({
         amount: '',
         password: '',
@@ -55,7 +54,7 @@ const Login = () => {
                 <form>
                     <TextField color='secondary'
                         id="outlined-multiline-static"
-                        label="Username"                     
+                        label="Username"
                         defaultValue="Default Value"
                         sx={{ paddingBottom: '1rem' }}
                         placeholder='Enter username' fullWidth required />
@@ -98,8 +97,8 @@ const Login = () => {
                     </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                    <Link component={RouterLink} to='/signUp' color={'secondary'}>
-                        Sign Up
+                    <Link component={RouterLink} to='/login' color={'secondary'}>
+                        Login
                     </Link>
                 </Typography>
             </LoginPaper>
@@ -107,4 +106,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SingUp;

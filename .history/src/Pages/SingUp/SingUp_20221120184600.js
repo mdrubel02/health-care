@@ -6,18 +6,17 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Link as RouterLink } from 'react-router-dom';
 
 
-
 const LoginPaper = styled(Paper)(({ theme }) => ({
     padding: '20px',
     height: '70vh',
     width: '280px',
     margin: '20px auto',
     [theme.breakpoints.down("md")]: {
-        height: '40vh',
+        height: '50vh',
         marginTop: '0.5rem'
     },
 }));
-const Login = () => {
+const SingUp = () => {
     const [values, setValues] = useState({
         amount: '',
         password: '',
@@ -39,8 +38,6 @@ const Login = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-    // const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const btnstyle = { margin: '8px 0' }
     return (
@@ -50,15 +47,21 @@ const Login = () => {
             >
                 <Grid align='center'>
                     <Avatar style={avatarStyle}><PersonOutlineIcon /></Avatar>
-                    <h2>Sign In</h2>
+                    <h2>Sign Up</h2>
                 </Grid>
                 <form>
                     <TextField color='secondary'
                         id="outlined-multiline-static"
-                        label="Username"                     
-                        defaultValue="Default Value"
+                        autoComplete='off'
+                        label="Username"
                         sx={{ paddingBottom: '1rem' }}
                         placeholder='Enter username' fullWidth required />
+                    <TextField color='secondary'
+                        id="outlined-multiline-static"
+                        autoComplete='off'
+                        label="Email"
+                        sx={{ paddingBottom: '1rem' }}
+                        placeholder='Enter Email' fullWidth required />
                     <FormControl variant="outlined" fullWidth color='secondary'>
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                         <OutlinedInput
@@ -79,6 +82,7 @@ const Login = () => {
                                 </InputAdornment>
                             }
                             label="Password"
+                            required
                         />
                     </FormControl>
                     <FormControlLabel
@@ -98,8 +102,8 @@ const Login = () => {
                     </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                    <Link component={RouterLink} to='/signUp' color={'secondary'}>
-                        Sign Up
+                    <Link component={RouterLink} to='/login' color={'secondary'}>
+                        Login
                     </Link>
                 </Typography>
             </LoginPaper>
@@ -107,4 +111,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SingUp;

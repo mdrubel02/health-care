@@ -29,7 +29,7 @@ const Banner = () => {
                     sx={{
                         width: { xs: "100%", sm: "50%", md: "40%" },
                         padding: { xs: 3, sm: 2, md: 20, lg: 20 },
-                        marginTop: {xs: 15, md:0, lg: 0, }
+                        
                     }}
                 >
                     <Box sx={{ background: "white", opacity: "0.8", }}>

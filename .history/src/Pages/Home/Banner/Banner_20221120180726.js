@@ -20,7 +20,7 @@ const Banner = () => {
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     height: 600,
-                    width: "100%",
+                    width: {lg:"100%",xs: "50%"},
                     display: "flex",
                     justifyContent: "center",
                 }}
