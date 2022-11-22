@@ -1,15 +1,16 @@
-import { AppBar, Avatar, Box, Button, Container,  Drawer, IconButton,  Menu, MenuItem,Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
+import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import { tokens } from '../../Theme/Theme';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+// import { Link } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 import './Header.css'
 import { AuthContext } from '../../Context/User/UserContext';
-import Account from './Account';
-import NavBarDrawer from './NavBarDrawer';
 
+
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -19,20 +20,21 @@ const Header = () => {
     const colors = tokens(theme.palette.mode);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [state, setState] = useState({ left: false });
 
-
+  
     const hello = () => {
         logOut()
-            .then(() => {
-                console.log('logout');
-                navigate('/home')
-            })
-            .then((error) => {
-                console.log(error)
-            })
+        .then(() => {
+            console.log('logout');
+            navigate('/home')
+        })
+        .then((error) => {
+            console.log(error)
+        })
     }
-
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -45,26 +47,16 @@ const Header = () => {
         setAnchorElUser(null);
     };
     const items = <React.Fragment>
-        <Button sx={{ color: 'white' }} component={RouterLink} to="/home">Home</Button>
-        <Button sx={{ color: 'white' }} component={RouterLink} to="/appointment">Appointment</Button>
-        <Button sx={{ color: 'white' }} component={RouterLink} to="/shop">Shop</Button>
-        {user?.email && <Button
-            onClick={hello}
-            color='secondary'
-            variant="outlined" component={RouterLink} to='/signUp' startIcon={<LoginIcon />}>
-            LogOut
-        </Button>}
-    </React.Fragment>
-    const avatarStyle = { backgroundColor: '#1bbd7e' }
-    //drawer
-    const toggleDrawer = (anchor,open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open  });
-    };
-   
+    <Button sx={{ color: 'white' }} component={RouterLink} to="/home">Home</Button>
+    <Button sx={{ color: 'white' }} component={RouterLink} to="/appointment">Appointment</Button>
+    <Button sx={{ color: 'white' }} component={RouterLink} to="/shop">Shop</Button>
+    {user?.email && <Button
+        onClick={hello}
+        color='secondary'
+        variant="outlined" component={RouterLink} to='/signUp' startIcon={<LoginIcon />}>
+        LogOut
+    </Button>}
+</React.Fragment>
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -87,30 +79,43 @@ const Header = () => {
                     >
                         Doctors portal
                     </Typography>
-                    {['left'].map((anchor) => (
-                        <React.Fragment key={anchor}>
-                            <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
-                                <IconButton
-                                    size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={toggleDrawer(anchor, true)}
-                                    color="inherit"
-                                >
-                                    <MenuIcon />
-                                </IconButton>
-                                <Drawer
-                                    anchor={anchor}
-                                    open={state[anchor]}
-                                    onClose={toggleDrawer(anchor, false)}
-                                    >
-                                    <NavBarDrawer toggleDrawer={toggleDrawer} anchor={anchor} />
-                                    {/* {list(anchor)} */}
-                                </Drawer>
-                            </Box>
-                        </React.Fragment>
-                    ))}
+
+                    <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography variant="h5" sx={{ color: 'withe' }} textAlign="center">{items}</Typography>
+                            </MenuItem>
+
+                        </Menu>
+                    </Box>
 
                     <Typography
                         variant="h3"
@@ -143,14 +148,13 @@ const Header = () => {
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         {user?.email ? <Box>
-                            <Tooltip title={user?.displayName}>
+                            <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {user?.photoURL ? <Avatar alt="Remy Sharp" src={user?.photoURL} /> :
-                                        <Avatar style={avatarStyle}><PersonOutlineIcon /></Avatar>}
+                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                 </IconButton>
                             </Tooltip>
                             <Menu
-                                sx={{ mt: '45px', width: '500px' }}
+                                sx={{ mt: '45px' }}
                                 id="menu-appbar"
                                 anchorEl={anchorElUser}
                                 anchorOrigin={{
@@ -165,14 +169,11 @@ const Header = () => {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {/* {settings.map((setting) => (
+                                {settings.map((setting) => (
                                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
-                                ))} */}
-                                <MenuItem>
-                                    <Account />
-                                </MenuItem>
+                                ))}
                             </Menu>
                         </Box> :
                             <Button

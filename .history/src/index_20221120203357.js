@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ColorContextProvider } from './Theme/Theme';
-import  UserContext from './Context/User/UserContext';
+import { UserContext }from './Context/User/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>

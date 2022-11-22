@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Appointment from "../Pages/Appointment/Appointment";
+import NavBarDrawer from "../Pages/Header/NavBarDrawer";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Shop from "../Pages/Shop/Shop";
@@ -17,7 +18,7 @@ const router = createBrowserRouter([{
         {path: '/shop',element: <Shop/>},
         {path: '/login',element: <Login/>},
         {path: '/signUp',element: <SingUp/>},
-      
+        {element: <NavBarDrawer/>},
     ]
 }])
 export default router;

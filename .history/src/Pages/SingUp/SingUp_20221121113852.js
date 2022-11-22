@@ -82,7 +82,7 @@ const SingUp = () => {
         signInWithGoogle()
             .then((result) => {
                 console.log(result.user);
-                navigate(form, { replace: true })
+                navigate('/home')
             })
             .then((error) => {
                 console.log(error);

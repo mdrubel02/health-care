@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Button, Container,  Drawer, IconButton,  Menu, MenuItem,Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
@@ -11,6 +11,8 @@ import Account from './Account';
 import NavBarDrawer from './NavBarDrawer';
 
 
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     console.log(user)
@@ -19,7 +21,7 @@ const Header = () => {
     const colors = tokens(theme.palette.mode);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [state, setState] = useState({ left: false });
+    const [state, setState] = useState({left: false});
 
 
     const hello = () => {
@@ -32,7 +34,7 @@ const Header = () => {
                 console.log(error)
             })
     }
-
+  
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -57,14 +59,14 @@ const Header = () => {
     </React.Fragment>
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     //drawer
-    const toggleDrawer = (anchor,open) => (event) => {
+      const toggleDrawer = ( open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
+          return;
         }
-
-        setState({ ...state, [anchor]: open  });
-    };
-   
+    
+        setState({ ...state, open });
+      };
+    
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -87,30 +89,21 @@ const Header = () => {
                     >
                         Doctors portal
                     </Typography>
-                    {['left'].map((anchor) => (
-                        <React.Fragment key={anchor}>
-                            <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
-                                <IconButton
-                                    size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={toggleDrawer(anchor, true)}
-                                    color="inherit"
-                                >
-                                    <MenuIcon />
-                                </IconButton>
-                                <Drawer
-                                    anchor={anchor}
-                                    open={state[anchor]}
-                                    onClose={toggleDrawer(anchor, false)}
-                                    >
-                                    <NavBarDrawer toggleDrawer={toggleDrawer} anchor={anchor} />
-                                    {/* {list(anchor)} */}
-                                </Drawer>
-                            </Box>
-                        </React.Fragment>
-                    ))}
+
+                    <Box className='middle' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={()=>toggleDrawer( true)}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                      
+                        <NavBarDrawer toggleDrawer={toggleDrawer} state={state} />
+                    </Box>
 
                     <Typography
                         variant="h3"

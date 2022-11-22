@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Button, Container,  Drawer, IconButton,  Menu, MenuItem,Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, SwipeableDrawer, Toolbar, Tooltip, Typography, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
@@ -8,8 +8,10 @@ import LoginIcon from '@mui/icons-material/Login';
 import './Header.css'
 import { AuthContext } from '../../Context/User/UserContext';
 import Account from './Account';
-import NavBarDrawer from './NavBarDrawer';
+// import NavBarDrawer from './NavBarDrawer';
 
+
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -64,7 +66,40 @@ const Header = () => {
 
         setState({ ...state, [anchor]: open  });
     };
-   
+    const list = (anchor) => (
+        <Box
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <PersonOutlineIcon /> : <PersonOutlineIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <PersonOutlineIcon /> : <PersonOutlineIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    );
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -100,13 +135,13 @@ const Header = () => {
                                 >
                                     <MenuIcon />
                                 </IconButton>
-                                <Drawer
+                                <Drawer>
                                     anchor={anchor}
                                     open={state[anchor]}
                                     onClose={toggleDrawer(anchor, false)}
-                                    >
-                                    <NavBarDrawer toggleDrawer={toggleDrawer} anchor={anchor} />
-                                    {/* {list(anchor)} */}
+                                >
+                                    {/* <NavBarDrawer toggleDrawer={toggleDrawer} state={state} /> */}
+                                    {list(anchor)}
                                 </Drawer>
                             </Box>
                         </React.Fragment>

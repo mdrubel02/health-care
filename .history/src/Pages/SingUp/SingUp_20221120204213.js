@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Checkbox, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Paper, styled, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Checkbox, Divider, FormControl, FormControlLabel, Grid, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Paper, Stack, styled, TextField, Typography } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import GoogleIcon from '@mui/icons-material/Google';
 import { Link as RouterLink } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/User/UserContext';
 
 
 const LoginPaper = styled(Paper)(({ theme }) => ({
@@ -12,7 +14,8 @@ const LoginPaper = styled(Paper)(({ theme }) => ({
     width: '280px',
     margin: '20px auto',
 }));
-const Login = () => {
+const SingUp = () => {
+    const {loading, signInWithGoogle} = useContext(AuthContext)
     const [values, setValues] = useState({
         amount: '',
         password: '',
@@ -34,25 +37,53 @@ const Login = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-    // const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const btnstyle = { margin: '8px 0' }
+
+    const handleSignUp = (e)=>{
+        e.preventDefault();
+        const from=e.target
+        const name = from.name.value;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(name,email,password);
+    }
+
+    //google sign up 
+    const handleGoogle =()=>{
+        signInWithGoogle()
+        .then((result) => {
+            console.log(result.user);
+            // navigate('/home')
+        })
+        .then((error) => {
+            console.log(error);
+        })
+    }
     return (
         <Grid>
-            <LoginPaper elevation={10} 
+            <LoginPaper elevation={10}
+              
             >
                 <Grid align='center'>
                     <Avatar style={avatarStyle}><PersonOutlineIcon /></Avatar>
-                    <h2>Sign In</h2>
+                    <h2>Sign Up</h2>
                 </Grid>
-                <form>
+                <form onSubmit={handleSignUp}>
                     <TextField color='secondary'
                         id="outlined-multiline-static"
-                        label="Username"                     
-                        defaultValue="Default Value"
+                        autoComplete='off'
+                        name = 'name'
+                        label="Username"
                         sx={{ paddingBottom: '1rem' }}
                         placeholder='Enter username' fullWidth required />
+                    <TextField color='secondary'
+                        id="outlined-multiline-static"
+                        autoComplete='off'
+                        name= 'email'
+                        label="Email"
+                        sx={{ paddingBottom: '1rem' }}
+                        placeholder='Enter Email' fullWidth required />
                     <FormControl variant="outlined" fullWidth color='secondary'>
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                         <OutlinedInput
@@ -60,6 +91,7 @@ const Login = () => {
                             type={values.showPassword ? 'text' : 'password'}
                             value={values.password}
                             onChange={handleChange('password')}
+                            name= 'password'
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -73,6 +105,7 @@ const Login = () => {
                                 </InputAdornment>
                             }
                             label="Password"
+                            required
                         />
                     </FormControl>
                     <FormControlLabel
@@ -86,14 +119,27 @@ const Login = () => {
                     />
                     <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
                 </form>
+                <Divider sx={{
+                        "&::before, &::after": {
+                            borderColor: "secondary.light",
+                        },
+                        color: 'primary'
+                    }}>OR</Divider>
+                     <Stack direction='row' spacing={1}>
+                    <GoogleIcon color = 'secondary' sx={{ fontSize: '2.2rem',  }} />
+                        <Typography onClick={handleGoogle}  sx={{ cursor: 'pointer',lineHeight: '2.5rem' }} color='secondary'>
+                            Login With Google
+                        </Typography>
+                       
+                    </Stack>
                 <Typography color={'secondary'}>
                     <Link href="#" color={'secondary'} >
                         Forgot password ?
                     </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                    <Link component={RouterLink} to='/signUp' color={'secondary'}>
-                        Sign Up
+                    <Link component={RouterLink} to='/login' color={'secondary'}>
+                        Login
                     </Link>
                 </Typography>
             </LoginPaper>
@@ -101,4 +147,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SingUp;
